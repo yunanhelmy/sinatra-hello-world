@@ -1,0 +1,16 @@
+version: '3'
+services:
+  default: &default
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4567:4567"
+  development:
+    <<: *default
+    environment:
+      - RACK_ENV=development
+  production:
+    <<: *default
+    environment:
+      - RACK_ENV=production
